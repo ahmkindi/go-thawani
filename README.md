@@ -23,8 +23,8 @@ import (
 
 const (
   THAWANI_BASE_URL = "https://uatcheckout.thawani.om"
-  THAWANI_API_KEY = rRQ26GcsZzoEhbrP2HZvLYDbn9C9et
-  THAWANI_PUBLISHABLE_KEY = HGvTMLDssJghr9tlN9gr4DVYt0qyBy
+  THAWANI_API_KEY = "rRQ26GcsZzoEhbrP2HZvLYDbn9C9et"
+  THAWANI_PUBLISHABLE_KEY = "HGvTMLDssJghr9tlN9gr4DVYt0qyBy"
 )
 
 func main() {

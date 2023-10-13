@@ -58,6 +58,16 @@ func (c *ThawaniClient) GetSessionByClientReference(clientReference string) (res
 	return resp, err
 }
 
+func (c *ThawaniClient) GetSessionBySessionID(sessionID string) (resp *Session, error error) {
+	req, err := c.newRequest("GET", fmt.Sprintf("/api/v1/checkout/session/%s", sessionID), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = c.do(req, &resp)
+	return resp, err
+}
+
 func (c *ThawaniClient) newRequest(method, path string, body interface{}) (*http.Request, error) {
 	rel := &url.URL{Path: path}
 	u := c.BaseURL.ResolveReference(rel)

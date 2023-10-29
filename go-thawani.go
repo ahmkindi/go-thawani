@@ -48,6 +48,16 @@ func (c *ThawaniClient) CreateSession(body CreateSessionReq) (resp *Session, red
 	return resp, fmt.Sprintf("%s/pay/%s?key=%s", c.BaseURL.String(), resp.Data.SessionId, c.PublishableKey), err
 }
 
+func (c *ThawaniClient) CancelSession(sessionID string) (resp *BasicResponse, error error) {
+	req, err := c.newRequest("POST", fmt.Sprintf("/api/v1/checkout/%s/cancel", sessionID), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = c.do(req, &resp)
+	return resp, err
+}
+
 func (c *ThawaniClient) GetSessionByClientReference(clientReference string) (resp *Session, error error) {
 	req, err := c.newRequest("GET", fmt.Sprintf("/api/v1/checkout/reference/%s", clientReference), nil)
 	if err != nil {

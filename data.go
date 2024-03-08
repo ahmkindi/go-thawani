@@ -3,6 +3,7 @@ package thawani
 import (
 	"net/http"
 	"net/url"
+	"time"
 
 	"github.com/ahmkindi/go-thawani/types/mode"
 	"github.com/ahmkindi/go-thawani/types/paymentstatus"
@@ -43,6 +44,8 @@ type SessionData struct {
 	Products          []Product          `json:"products"`
 	TotalAmount       int                `json:"total_amount"`
 	PaymentStatus     paymentstatus.Type `json:"payment_status"`
+	ExpiresAt         time.Time          `json:"expire_at"`
+	CreatedAt         time.Time          `json:"created_at"`
 }
 
 type BasicResponse struct {

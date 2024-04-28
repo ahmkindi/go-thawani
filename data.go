@@ -22,13 +22,13 @@ type Product struct {
 }
 
 type CreateSessionReq struct {
-	ClientReferenceId string            `json:"client_reference_id"`
-	Mode              mode.Type         `json:"mode"`
-	Products          []Product         `json:"products"`
-	SuccessUrl        string            `json:"success_url"`
-	CancelUrl         string            `json:"cancel_url"`
-	CustomerId        string            `json:"customer_id"`
-	Metadata          map[string]string `json:"metadata"`
+	ClientReferenceId string      `json:"client_reference_id"`
+	Mode              mode.Type   `json:"mode"`
+	Products          []Product   `json:"products"`
+	SuccessUrl        string      `json:"success_url"`
+	CancelUrl         string      `json:"cancel_url"`
+	CustomerId        string      `json:"customer_id"`
+	Metadata          interface{} `json:"metadata"`
 }
 
 type CustomerData struct {
@@ -37,14 +37,15 @@ type CustomerData struct {
 }
 
 type SessionData struct {
-	SessionId         string             `json:"session_id"`
-	ClientReferenceId string             `json:"client_reference_id"`
-	CustomerId        string             `json:"customer_id"`
-	Products          []Product          `json:"products"`
-	TotalAmount       int                `json:"total_amount"`
-	PaymentStatus     paymentstatus.Type `json:"payment_status"`
-	ExpiresAt         string             `json:"expire_at"`
-	CreatedAt         string             `json:"created_at"`
+	SessionId         string                 `json:"session_id"`
+	ClientReferenceId string                 `json:"client_reference_id"`
+	CustomerId        string                 `json:"customer_id"`
+	Products          []Product              `json:"products"`
+	TotalAmount       int                    `json:"total_amount"`
+	PaymentStatus     paymentstatus.Type     `json:"payment_status"`
+	ExpiresAt         string                 `json:"expire_at"`
+	CreatedAt         string                 `json:"created_at"`
+	Metadata          map[string]interface{} `json:"metadata"`
 }
 
 type BasicResponse struct {
@@ -64,6 +65,5 @@ type CreateCustomerResp struct {
 
 type Session struct {
 	BasicResponse
-	Data     SessionData            `json:"data"`
-	Metadata map[string]interface{} `json:"metadata"`
+	Data SessionData `json:"data"`
 }
